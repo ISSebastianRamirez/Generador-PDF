@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PDFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codreunion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nom_reunion" Type="varchar" MaxLength="50" />
+    <Property Name="coordinador" Type="varchar" MaxLength="50" />
+    <Property Name="lugar" Type="varchar" MaxLength="50" />
+    <Property Name="duracion" Type="varchar" MaxLength="50" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="horainicio" Type="varchar" MaxLength="50" />
+    <Property Name="horafinal" Type="varchar" MaxLength="50" />
+    <Property Name="objereunion" Type="varchar" MaxLength="255" />
+    <Property Name="nom" Type="varchar" MaxLength="50" />
+    <Property Name="nom2" Type="varchar" MaxLength="50" />
+    <Property Name="nom3" Type="varchar" MaxLength="50" />
+    <Property Name="nom4" Type="varchar" MaxLength="50" />
+    <Property Name="nom5" Type="varchar" MaxLength="50" />
+    <Property Name="cargo" Type="varchar" MaxLength="50" />
+    <Property Name="cargo2" Type="varchar" MaxLength="50" />
+    <Property Name="cargo3" Type="varchar" MaxLength="50" />
+    <Property Name="cargo4" Type="varchar" MaxLength="50" />
+    <Property Name="cargo5" Type="varchar" MaxLength="50" />
+    <Property Name="celular" Type="varchar" MaxLength="50" />
+    <Property Name="celular2" Type="varchar" MaxLength="50" />
+    <Property Name="celular3" Type="varchar" MaxLength="50" />
+    <Property Name="celular4" Type="varchar" MaxLength="50" />
+    <Property Name="celular5" Type="varchar" MaxLength="50" />
+    <Property Name="correo" Type="varchar" MaxLength="50" />
+    <Property Name="correo2" Type="varchar" MaxLength="50" />
+    <Property Name="correo3" Type="varchar" MaxLength="50" />
+    <Property Name="correo4" Type="varchar" MaxLength="50" />
+    <Property Name="correo5" Type="varchar" MaxLength="50" />
+    <Property Name="situafinanciero" Type="varchar" MaxLength="50" />
+    <Property Name="situainventario" Type="varchar" MaxLength="50" />
+    <Property Name="situafacturacion" Type="varchar" MaxLength="50" />
+    <Property Name="situaecommerce" Type="varchar" MaxLength="50" />
+    <Property Name="situasoftware" Type="varchar" MaxLength="50" />
+    <Property Name="integracion" Type="varchar" MaxLength="50" />
+    <Property Name="erp" Type="varchar" MaxLength="50" />
+    <Property Name="softintegrar" Type="varchar" MaxLength="50" />
+    <Property Name="descsoftware" Type="varchar" MaxLength="255" />
+    <Property Name="scoringcli" Type="varchar" MaxLength="50" />
+    <Property Name="nomproveedor" Type="varchar" MaxLength="50" />
+    <Property Name="complejidad" Type="varchar" MaxLength="50" />
+    <Property Name="versionsiesa" Type="varchar" MaxLength="50" />
+    <Property Name="modulosiesa" Type="varchar" MaxLength="50" />
+    <Property Name="instasiesa" Type="varchar" MaxLength="50" />
+    <Property Name="instaintegrador" Type="varchar" MaxLength="50" />
+    <Property Name="origdatos" Type="varchar" MaxLength="50" />
+    <Property Name="entregadatos" Type="varchar" MaxLength="50" />
+    <Property Name="granularidad" Type="varchar" MaxLength="50" />
+    <Property Name="frecuencia" Type="varchar" MaxLength="50" />
+    <Property Name="volumen" Type="varchar" MaxLength="50" />
+    <Property Name="propioleng" Type="varchar" MaxLength="50" />
+    <Property Name="proveeleng" Type="varchar" MaxLength="50" />
+    <Property Name="num" Type="varchar" MaxLength="50" />
+    <Property Name="num2" Type="varchar" MaxLength="50" />
+    <Property Name="num3" Type="varchar" MaxLength="50" />
+    <Property Name="num4" Type="varchar" MaxLength="50" />
+    <Property Name="num5" Type="varchar" MaxLength="50" />
+    <Property Name="num6" Type="varchar" MaxLength="50" />
+    <Property Name="num7" Type="varchar" MaxLength="50" />
+    <Property Name="observaciones" Type="varchar" MaxLength="255" />
+    <Property Name="consulta" Type="varchar" MaxLength="50" />
+    <Property Name="consulta2" Type="varchar" MaxLength="50" />
+    <Property Name="consuta3" Type="varchar" MaxLength="50" />
+    <Property Name="campos" Type="varchar" MaxLength="50" />
+    <Property Name="campos2" Type="varchar" MaxLength="50" />
+    <Property Name="campos3" Type="varchar" MaxLength="50" />
+    <Property Name="filtros" Type="varchar" MaxLength="50" />
+    <Property Name="filtros2" Type="varchar" MaxLength="50" />
+    <Property Name="filtros3" Type="varchar" MaxLength="50" />
+    <Property Name="observacione2" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Participantes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Cargo" Type="varchar" MaxLength="50" />
+    <Property Name="Celular" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityContainer Name="PDFModelStoreContainer">
+    <EntitySet Name="info" EntityType="Self.info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participantes" EntityType="Self.Participantes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

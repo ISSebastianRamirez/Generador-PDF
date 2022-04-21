@@ -1,0 +1,422 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add new row in Participantes
+        $("#add-row").click(function () {
+            var nombre = $("#nombre").val();
+            var cargo = $("#cargo").val();
+            var celular = $("#celular").val();
+            var correo = $("#correo").val();
+            $(".table tbody tr").last().after(
+                '<tr class="fadetext">' +
+                '<td><input type="checkbox" id="select-row"></td>' +
+                '<td>' + nombre + '</td>' +
+                '<td>' + cargo + '</td>' +
+                '<td>' + celular + '</td>' +
+                '<td>' + correo + '</td>' +
+                '</tr>'
+            );
+        })
+        //Add new row in ERP
+        $("#add-row-erp").click(function () {
+            var conector = $("#conector").val();
+            $("#ERP tbody tr").last().after(
+                '<tr class="fadetext">' +
+                '<td><input type="checkbox" id="select-row-erp"></td>' +
+                '<td>' + conector + '</td>' +
+                '</tr>'
+            );
+        })
+        // Add new row in Consulta
+        $("#add-row-consul").click(function () {
+            var consul = $("#consul").val();
+            var campos = $("#campos").val();
+            var filtros = $("#filtros").val();
+            $("#consul tbody tr").last().after(
+                '<tr class="fadetext">' +
+                '<td><input type="checkbox" id="select-row"></td>' +
+                '<td>' + consul + '</td>' +
+                '<td>' + campos + '</td>' +
+                '<td>' + filtros + '</td>' +
+                '</tr>'
+            );
+        })
+        // Select all checkbox in Participantes
+        $("#select-all").click(function () {
+            var isSelected = $(this).is(":checked");
+            if (isSelected) {
+                $(".table tbody tr").each(function () {
+                    $(this).find('input[type="checkbox"]').prop('checked', true);
+                })
+            } else {
+                $(".table tbody tr").each(function () {
+                    $(this).find('input[type="checkbox"]').prop('checked', false);
+                })
+            }
+        });
+        // Select all checkbox in ERP
+        $("#select-all-erp").click(function () {
+            var isSelected = $(this).is(":checked");
+            if (isSelected) {
+                $("#ERP tbody tr").each(function () {
+                    $(this).find('input[type="checkbox"]').prop('checked', true);
+                })
+            } else {
+                $("#ERP tbody tr").each(function () {
+                    $(this).find('input[type="checkbox"]').prop('checked', false);
+                })
+            }
+        });
+        // Select all checkbox in ERP
+        $("#select-all-consul").click(function () {
+            var isSelected = $(this).is(":checked");
+            if (isSelected) {
+                $("#consul tbody tr").each(function () {
+                    $(this).find('input[type="checkbox"]').prop('checked', true);
+                })
+            } else {
+                $("#consul tbody tr").each(function () {
+                    $(this).find('input[type="checkbox"]').prop('checked', false);
+                })
+            }
+        });
+
+        // Remove selected rows in Participantes
+        $("#remove-row").click(function () {
+            $(".table tbody tr").each(function () {
+                var isChecked = $(this).find('input[type="checkbox"]').is(":checked");
+                var tableSize = $(".table tbody tr").length;
+                if (tableSize == 1) {
+                    alert('No intentes eliminar esto.');
+                } else if (isChecked) {
+                    $(this).remove();
+                }
+            });
+        });
+        //Remove row in ERP
+        $("#remove-row-erp").click(function () {
+            $("#ERP tbody tr").each(function () {
+                var isChecked = $(this).find('input[type="checkbox"]').is(":checked");
+                var tableSize = $("#ERP tbody tr").length;
+                if (tableSize == 1) {
+                    alert('No intentes eliminar esto.');
+                } else if (isChecked) {
+                    $(this).remove();
+                }
+            });
+        });
+        // Remove selected rows in Participantes
+        $("#remove-row-consul").click(function () {
+            $("#consul tbody tr").each(function () {
+                var isChecked = $(this).find('input[type="checkbox"]').is(":checked");
+                var tableSize = $("#consul tbody tr").length;
+                if (tableSize == 1) {
+                    alert('No intentes eliminar esto.');
+                } else if (isChecked) {
+                    $(this).remove();
+                }
+            });
+        });
+    });
+</script>
+<h2>Acta de requerimientos</h2>
+<div>
+    <label>Nombre reunion:</label>
+    <input type="text" name="txtNomReun" value="" />
+    <label>Acta #</label>
+    <input type="number" name="txtNumActa" value="" />
+</div>
+<div>
+    <label>Coordinador reunion:</label>
+    <input type="text" name="txtCoordinador" value="" />
+    <label>Lugar (Ciudad y Espacio):</label>
+    <input type="text" name="txtLugar" value="" />
+</div>
+<div>
+    <label>Fecha:</label>
+    <input type="date" name="txtFecha" value="" />
+    <label>Hora Inicio:</label>
+    <input type="time" name="txtHoraIni" value="" />
+    <label>Hora Finalización:</label>
+    <input type="time" name="txtHoraFin" value="" />
+    <label>Duracion:</label>
+    <input type="text" name="txtDuracion" value="" required />
+</div>
+<div>
+    <label>Objetivo de la reunión:</label>
+    <textarea name="txtObjetivoReun"></textarea>
+</div>
+<div>
+    <h3>Participantes / Contatctos del proyecto</h3>
+</div>
+<section class="segunda-tabla">
+    <form action="@Url.Action("IngreParti","CrearPDF")" method="post">
+        <br>
+        <br>
+        <div class="cont">
+            <input type="text" placeholder="Nombre" id="nombre" name="Nombre">
+            <input type="text" placeholder="Cargo o Rol" id="cargo" name="Cargo">
+            <input type="text" placeholder="Celular" id="celular" name="Celular">
+            <input type="text" placeholder="Correo electronico" id="correo" name="Email">
+            <button type="submit" class="btn btn-agregar" id="add-row">Agregar</button>
+        </div>
+        <div class="container">
+            <table class="table" border="1">
+                <thead>
+                    <tr>
+                        <th class="all">All <input type="checkbox" id="select-all"></th>
+                        <th>Nombre</th>
+                        <th>Cargo o Rol</th>
+                        <th>Celular</th>
+                        <th>Correo electronico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="remove-row" id="remove-row">Eliminar</button>
+        </div>
+    </form>
+</section>
+<div>
+    <h3>Consideraciones importantes</h3>
+</div>
+<div>
+    <p>
+        1. Integraciones con el Financiero:<br />
+        • Muy importante validar que el software origen nos entregue la cuenta contable para nosotros poder construir el documento contable.
+        <br />
+        • Cartera: lo ideal es que la cartera de clientes y proveedores sea administrada por Siesa, si esto no va a ser así se debe revisar en detalle
+        el caso y sustentarlo muy bien.
+    </p>
+    <textarea name="txtIntegraFinan" placeholder="Situación planteada por el cliente"></textarea>
+</div>
+<div>
+    <p>
+        2. Integraciones con Inventarios:<br />
+        • Lo ideal es que siempre el inventario se maneje en Siesa, si el cliente requiere manejar el inventario en el otro software es algo que debemos evitar debido a que integrar las transacciones de inventarios es muy complejo mantener el inventario en dos softwares.
+        <br />
+        • En cuanto al manejo del costo muy importante tener claro que se debe conocer el costo para el conector de entradas de inventario, cuando son salidas no es necesario porque se toma el del sistema, para los ajustes ya depende del concepto o motivo si es ajuste en cantidad o en valor y si es de entrada o de salida.
+    </p>
+    <textarea name="txtIntegraInve" placeholder="Situación planteada por el cliente"></textarea>
+</div>
+<div>
+    <p>
+        3. Integraciones con Facturación Electrónica:<br />
+        • Lo ideal es realizar el proceso de facturación electrónica desde Siesa sea por el módulo de ventas de financiero o ventas de comercial, y que el software origen nos entregue los datos mínimos requeridos para este fin, en donde el cargue lo hagamos por el conector de orden de venta para ventas de financiero y pedidos para ventas de comercial y que sea Siesa quien calcule los impuestos y retenciones.
+    </p>
+    <textarea name="txtIntegraFactu" placeholder="Situación planteada por el cliente"></textarea>
+</div>
+<div>
+    <p>
+        4. Integraciones con Ecommerce:<br />
+        • Validar muy bien si la carga del pedido se hará a ventas de comercial o si sería al POS del comercial, si es al POS es importante analizarlo en detalle ya que las integraciones con el POS tienen ciertas especificaciones que apenas estamos explorando.
+    </p>
+    <textarea name="txtIntegraEcom" placeholder="Situación planteada por el cliente"></textarea>
+</div>
+<div>
+    <p>
+        5. Integración de solo maestros o de captura de datos en otros softwares:<br />
+        • Cuando un cliente solicita integrar solo maestros o capturar los datos de un documento en otro sistema, se debe revisar en detalle para evitar que se dejen de usar las funcionalidades de Siesa e incurrir en arriesgar la integridad de los datos.
+    </p>
+    <textarea name="txtIntegraMaestro" placeholder="Situación planteada por el cliente"></textarea>
+</div>
+<div>
+    <h4>Integración:</h4>
+    <textarea name="txtIntegracion" placeholder="Ingrese información sobre la integración"></textarea>
+</div>
+<div>
+    <label>Para que se va a usar la información que sale del ERP:</label>
+    <input type="text" name="txtERP" value="" />
+</div>
+<div>
+    <label>Nombre del Software por integrar:</label>
+    <input type="text" name="txtNomSoft" value="" />
+</div>
+<div>
+    <label>Que hace el software:</label>
+    <input type="text" name="txtQuehace" value="" />
+</div>
+<div>
+    <label>Scoring del Cliente:</label>
+    <input type="text" name="txtScoring" value="" />
+</div>
+<div>
+    <label>Nombre del proveedor:</label>
+    <input type="text" name="txtNomProvee" value="" />
+</div>
+<div>
+    <label>Complejidad Integración:</label>
+    <select name="txtComple">
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
+    </select>
+</div>
+<div>
+    <label>Versión Siesa:</label>
+    <select name="txtVersion">
+        <option value="Siesa Enterprise">Siesa Enterprise</option>
+        <option value="Siesa SBS">Siesa SBS</option>
+        <option value="Siesa 8.5">Siesa 8.5</option>
+    </select>
+</div>
+<div>
+    <label>Modulos de Siesa para integrar:</label>
+    <select name="txtModulo">
+        <option value="Financiero">Financiero</option>
+        <option value="Comercial">Comercial</option>
+        <option value="Manufactura">Manufactura</option>
+        <option value="Nomina">Nomina</option>
+    </select>
+</div>
+<div>
+    <label>Instalación Siesa:</label>
+    <select name="txtInstaSiesa">
+        <option value="Nube Siesa">Nube Siesa</option>
+        <option value="Servidores Locales">Servidores Locales</option>
+        <option value="Nube Cliente">Nube Cliente</option>
+    </select>
+</div>
+<div>
+    <label>Instalación Integrador:</label>
+    <select name="txtInstaIntegra">
+        <option value="Nube Siesa">Nube Siesa</option>
+        <option value="Servidores Locales">Servidores Locales</option>
+        <option value="Nube Cliente">Nube Cliente</option>
+    </select>
+</div>
+<div>
+    <label>Origen de datos:</label>
+    <select name="txtOrigen">
+        <option value="Archivos Planos">Archivos Planos</option>
+        <option value="FTP">FTP</option>
+        <option value="Web Service SOAP - REST">Web Service SOAP - REST</option>
+    </select>
+</div>
+<div>
+    <label>Entrega de datos:</label>
+    <select name="txtEntrega">
+        <option value="Archivos Planos">Archivos Planos</option>
+        <option value="FTP">FTP</option>
+        <option value="Web Service SOAP - REST">Web Service SOAP - REST</option>
+    </select>
+</div>
+<div>
+    <label>Granularidad:</label>
+    <select name="txtGranularidad">
+        <option value="Si">Si</option>
+        <option value="No">No</option>
+    </select>
+</div>
+<div>
+    <label>Frecuencia:</label>
+    <input type="text" name="txtFrecuencia" value="" />
+    <label>Volumen:</label>
+    <input type="text" name="txtVolumen" value="" />
+</div>
+<div>
+    <h4>Desarrollo:</h4>
+</div>
+<div>
+    <label>Propio Lenguaje:</label>
+    <input type="text" name="txtPropLeng" value="" />
+    <label>Proveedor Lenguaje:</label>
+    <input type="text" name="txtProveeLeng" value="" />
+</div>
+<div>
+    <h3>Puntos de encuentro (Carga de datos al ERP)</h3>
+</div>
+<div>
+    <label>Consume:</label>
+    <input type="text" name="txtConsume" value="" />
+    <label>Expone:</label>
+    <input type="text" name="txtExpone" value="" />
+</div>
+<section class="tercera-tabla">
+    <form action="@Url.Action("IngreConector","CrearPDF")" method="post">
+        <br>
+        <br>
+        <div class="conecto">
+            <input type="text" placeholder="Conector" id="conector" name="Conectores">
+            <button class="btn btn-agregar" id="add-row-erp">Agregar</button>
+        </div>
+        <div class="container">
+            <table id="ERP" border="1">
+                <thead>
+                    <tr>
+                        <th class="all">All <input type="checkbox" id="select-all-erp"></th>
+                        <th>Conectores para carga de datos al ERP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="remove-row" id="remove-row-erp">Eliminar</button>
+        </div>
+    </form>
+</section>
+<div>
+    <label>Observaciones:</label>
+    <textarea name="txtObervaciones"></textarea>
+</div>
+<div>
+    <h3>Puntos de encuentro (Consultas al ERP)</h3>
+</div>
+<div>
+    <label>Consume:</label>
+    <input type="text" name="txtConsume2" value="" />
+    <label>Expone:</label>
+    <input type="text" name="txtExpone2" value="" />
+</div>
+<section class="cuarta-tabla">
+    <form action="@Url.Action("IngreConsulta","CrearPDF")" method="post">
+        <br>
+        <br>
+        <div class="cont">
+            <input type="text" placeholder="Consulta" id="consul" name="Consultas">
+            <input type="text" placeholder="Campos" id="campos" name="Campos">
+            <input type="text" placeholder="Filtros" id="filtros" name="Filtros">
+            <button class="btn btn-agregar" id="add-row-consul">Agregar</button>
+        </div>
+        <div class="container">
+            <table id="consul" border="1">
+                <thead>
+                    <tr>
+                        <th class="all">All <input type="checkbox" id="select-all-consul"></th>
+                        <th>Consulta</th>
+                        <th>Campos</th>
+                        <th>Filtros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="remove-row" id="remove-row-consul">Eliminar</button>
+        </div>
+    </form>
+</section>
+<div>
+    <label>Observaciones:</label>
+    <textarea name="txtObservaciones2"></textarea>
+</div>
+<div>
+    <label>Conclusiones:</label>
+    <textarea name="txtConclusiones"></textarea>
+    <label>Tareas Pendientes</label>
+    <textarea name="txtTareas"></textarea>
+</div>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PDFModelStoreContainer" CdmEntityContainer="PDFEntities">
+    <EntitySetMapping Name="info">
+      <EntityTypeMapping TypeName="PDFModel.info">
+        <MappingFragment StoreEntitySet="info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codreunion" ColumnName="codreunion" />
+          <ScalarProperty Name="nom_reunion" ColumnName="nom_reunion" />
+          <ScalarProperty Name="coordinador" ColumnName="coordinador" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
+          <ScalarProperty Name="duracion" ColumnName="duracion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="horainicio" ColumnName="horainicio" />
+          <ScalarProperty Name="horafinal" ColumnName="horafinal" />
+          <ScalarProperty Name="objereunion" ColumnName="objereunion" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="nom2" ColumnName="nom2" />
+          <ScalarProperty Name="nom3" ColumnName="nom3" />
+          <ScalarProperty Name="nom4" ColumnName="nom4" />
+          <ScalarProperty Name="nom5" ColumnName="nom5" />
+          <ScalarProperty Name="cargo" ColumnName="cargo" />
+          <ScalarProperty Name="cargo2" ColumnName="cargo2" />
+          <ScalarProperty Name="cargo3" ColumnName="cargo3" />
+          <ScalarProperty Name="cargo4" ColumnName="cargo4" />
+          <ScalarProperty Name="cargo5" ColumnName="cargo5" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="celular2" ColumnName="celular2" />
+          <ScalarProperty Name="celular3" ColumnName="celular3" />
+          <ScalarProperty Name="celular4" ColumnName="celular4" />
+          <ScalarProperty Name="celular5" ColumnName="celular5" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="correo2" ColumnName="correo2" />
+          <ScalarProperty Name="correo3" ColumnName="correo3" />
+          <ScalarProperty Name="correo4" ColumnName="correo4" />
+          <ScalarProperty Name="correo5" ColumnName="correo5" />
+          <ScalarProperty Name="situafinanciero" ColumnName="situafinanciero" />
+          <ScalarProperty Name="situainventario" ColumnName="situainventario" />
+          <ScalarProperty Name="situafacturacion" ColumnName="situafacturacion" />
+          <ScalarProperty Name="situaecommerce" ColumnName="situaecommerce" />
+          <ScalarProperty Name="situasoftware" ColumnName="situasoftware" />
+          <ScalarProperty Name="integracion" ColumnName="integracion" />
+          <ScalarProperty Name="erp" ColumnName="erp" />
+          <ScalarProperty Name="softintegrar" ColumnName="softintegrar" />
+          <ScalarProperty Name="descsoftware" ColumnName="descsoftware" />
+          <ScalarProperty Name="scoringcli" ColumnName="scoringcli" />
+          <ScalarProperty Name="nomproveedor" ColumnName="nomproveedor" />
+          <ScalarProperty Name="complejidad" ColumnName="complejidad" />
+          <ScalarProperty Name="versionsiesa" ColumnName="versionsiesa" />
+          <ScalarProperty Name="modulosiesa" ColumnName="modulosiesa" />
+          <ScalarProperty Name="instasiesa" ColumnName="instasiesa" />
+          <ScalarProperty Name="instaintegrador" ColumnName="instaintegrador" />
+          <ScalarProperty Name="origdatos" ColumnName="origdatos" />
+          <ScalarProperty Name="entregadatos" ColumnName="entregadatos" />
+          <ScalarProperty Name="granularidad" ColumnName="granularidad" />
+          <ScalarProperty Name="frecuencia" ColumnName="frecuencia" />
+          <ScalarProperty Name="volumen" ColumnName="volumen" />
+          <ScalarProperty Name="propioleng" ColumnName="propioleng" />
+          <ScalarProperty Name="proveeleng" ColumnName="proveeleng" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="num2" ColumnName="num2" />
+          <ScalarProperty Name="num3" ColumnName="num3" />
+          <ScalarProperty Name="num4" ColumnName="num4" />
+          <ScalarProperty Name="num5" ColumnName="num5" />
+          <ScalarProperty Name="num6" ColumnName="num6" />
+          <ScalarProperty Name="num7" ColumnName="num7" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="consulta" ColumnName="consulta" />
+          <ScalarProperty Name="consulta2" ColumnName="consulta2" />
+          <ScalarProperty Name="consuta3" ColumnName="consuta3" />
+          <ScalarProperty Name="campos" ColumnName="campos" />
+          <ScalarProperty Name="campos2" ColumnName="campos2" />
+          <ScalarProperty Name="campos3" ColumnName="campos3" />
+          <ScalarProperty Name="filtros" ColumnName="filtros" />
+          <ScalarProperty Name="filtros2" ColumnName="filtros2" />
+          <ScalarProperty Name="filtros3" ColumnName="filtros3" />
+          <ScalarProperty Name="observacione2" ColumnName="observacione2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participantes">
+      <EntityTypeMapping TypeName="PDFModel.Participantes">
+        <MappingFragment StoreEntitySet="Participantes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PDFModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
