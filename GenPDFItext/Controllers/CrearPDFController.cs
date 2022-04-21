@@ -16,6 +16,7 @@ namespace GenPDFItext.Controllers
 {
     public class CrearPDFController : Controller
     {
+        //Creacion del pDF
         IngreParticipante inp = new IngreParticipante();
         // GET: CrearPDF
         public ActionResult Index()
